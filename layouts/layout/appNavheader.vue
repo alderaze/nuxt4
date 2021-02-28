@@ -1,5 +1,11 @@
 <template>
-  <v-app-bar fixed app  :class="{clipped:clipped}">
+  <v-app-bar 
+  fixed 
+  app 
+  elevation="0" 
+  height="57"
+  :color="$vuetify.theme.isDark?'transparent':'white'"  
+  :class="{clipped:clipped}">
     <v-app-bar-nav-icon v-if="toggel" @click.stop="restdraw" >
       <v-icon>
         mdi-dots-vertical
@@ -20,8 +26,7 @@
       </v-btn>
     <v-btn
     icon
-            @click.stop="restclipped"
-
+    @click.stop="restclipped"
     >
       <v-icon>
         mdi-application
@@ -32,85 +37,60 @@
       class="hidden-md-and-up"
       @click="restdraw"
     ></v-app-bar-nav-icon>
+
     <v-spacer></v-spacer>
-   <div class="pos">
-
-      <v-dialog
-      v-model="dialog"
-      persistent
-      max-width="600px"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          v-bind="attrs"
-          v-on="on"
-          color="transparent"
-          depressed
-          class=" px-2 mx-3"
+      <v-badge
+      color="green"
+      content="2"
+      class="mr-3"
+      overlap
         >
-        login
-        <v-icon  class="pa-2">mdi-account</v-icon>
-        </v-btn>
-      </template>
-      <v-card>
-        <v-card-title>
-          <span class="headline">User Profile</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12">
-                <v-text-field
-                  label="username*"
-                  type="text"
-                  required
-                ></v-text-field>
-                <v-text-field
-                  label="Password*"
-                  type="password"
-                  required
-                ></v-text-field>
-              </v-col>
-              
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="dialog = false"
-          >
-            Close
-          </v-btn>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="dialog = false"
-          >
-            Save
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <v-btn icon
+    @click.stop="
+    restdraw2(drawer2),
+    Ishowmessage(showmessage),
+    Ishowmessage2(showmessage2)
+    ">
+      <v-icon>
+      far fa-comments
+      </v-icon>
+    </v-btn>
+    </v-badge>
 
-   </div>
-    
+    <v-badge
+      color="green"
+      content="6"
+       overlap
+       class="mr-2"
+        >
+    <v-btn icon
+    class="pa-0" 
+    @click.stop="
+    restdraw2(drawer2),
+    Mshowmessage(showmessage),
+    Mshowmessage2(showmessage2)
+    ">
+      <v-icon>
+      far fa-bell
+      </v-icon>
+    </v-btn>
+    </v-badge>
+
+
+    <v-divider class="py-1 divid"></v-divider>
 
   </v-app-bar>
 </template>
 <script>
+import massge from "./navbar/mwssage/massge"
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
-  props: ["drawer","clipped"],
+  props: ["drawer","drawer2","showmessage","showmessage2","clipped"],
   data() {
     return {
       toggel:true,
       dialog:false,
-      messages: 4,
       show: false,
       model: 1,
       infos: [
@@ -144,14 +124,56 @@ export default {
       this.$emit("changemini", r);
       console.log(this.drawer);
     },
+    
+    restdraw2(val) {
+      let r = val
+      r = !r;
+      this.$emit("changemini2", r);
+    },
+
+
+    Ishowmessage(val) {
+       let r = val
+      r = true;
+      console.log("alderaze1")
+      this.$emit("Ishowmessage", r);
+
+    },
+    Ishowmessage2(val) {
+      let r = val
+      r =false
+      this.$emit("Ishowmessage2", r);
+    },
+
+
+
+    Mshowmessage(val) {
+       let r = val
+      r = false;
+      console.log("alderaze1")
+      this.$emit("Ishowmessage", r);
+
+    },
+    Mshowmessage2(val) {
+      let r = val
+      r =true
+      this.$emit("Ishowmessage2", r);
+    },
+
+
+
+
+
+
   restclipped() {
       let r = this.clipped;
       r = !r;
       this.$emit("changeclipped", r);
-    
-    
   },
   },
+
+
+  components:{massge}
 
 };
 </script>
@@ -166,6 +188,11 @@ export default {
 </style>
 
 <style scoped>
+.divid{
+  position: absolute;
+  bottom: -8px;
+  width: 100%;
+}
 .home.v-btn:not(.v-btn--round).v-size--default {
   min-width: 60px !important;
 }

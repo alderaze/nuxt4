@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
 
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -32,8 +33,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src:"~/plugins/animate",ssr:false},
+    {src: "~/plugins/typed.js", ssr: true },
 
-    {src:"~/plugins/aos",ssr:false},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -53,7 +54,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL:" http://localhost:5000"
+    
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
@@ -66,6 +67,13 @@ export default {
    
   },
   router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'posr',
+        path: '/psot',
+        component: resolve(__dirname, 'pages/')
+      })
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

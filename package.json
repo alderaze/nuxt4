@@ -16,7 +16,8 @@
     "core-js": "^3.8.3",
     "font-awesome-animation": "^1.1.1",
     "nuxt": "^2.14.12",
-    "v-animate-css": "0.0.3"
+    "v-animate-css": "0.0.3",
+    "vue-typed-js": "^0.1.2"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.11.3",

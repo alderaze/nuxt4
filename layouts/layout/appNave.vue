@@ -3,9 +3,9 @@
     <v-navigation-drawer
       id="default-drawer"
       v-model="drawer"
+      color="teransparent"
       :mini-variant.sync="mini"
       :clipped="clipped"
-      style="background: #363636"
       :src="groundnav"
       width="260"
       height="100vh"
@@ -13,34 +13,55 @@
       enable-resize-watcher
       app
       :right="$vuetify.rtl"
+      
     >
-      <v-overlay
-        z-index="-1"
-        style="background: rgba(0, 0, 0, 0.5)"
-      ></v-overlay>
       <app-Drawerr class="px-2" />
     </v-navigation-drawer>
     <app-Navheader 
     :drawer="drawer" 
+    :showmessage="showmessage"
+    :showmessage2="showmessage2"
+    :drawer2="drawer2" 
+    @changemini2="drawer2= $event" 
+    @Ishowmessage="showmessage= $event" 
+    @Ishowmessage2="showmessage2= $event" 
     @changemini="drawer = $event" 
     @changeclipped="clipped = $event" 
     :clipped="clipped"
     />
+
+
+    <!-- drawr messge -->
+    <v-navigation-drawer
+    width="500"
+      v-model="drawer2"
+      right
+      temporary
+      fixed
+    >
+    <message v-if="showmessage"/>
+    <message2 v-if="showmessage2"/>
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
+import message from "./navbar/mwssage/massge"
+import message2 from "./navbar/mwssage/massge2"
 import appNavheader from "./appNavheader";
 import appDrawerr from "./appDrawerr";
-
 import { mapGetters, mapMutations } from "vuex";
+
 export default {
-  // props: ["drawerr"],
+  props: ["message"],
 
   data() {
     return {
+      drawer2: false,
       drawer: true,
       clipped:false,
+      showmessage:false,
+      showmessage2:false
     };
   },
   computed: {
@@ -66,12 +87,19 @@ export default {
   components: {
     appNavheader,
     appDrawerr,
+    message,
+    message2
   },
 };
 </script>
 
 
+<style scope>
+.v-navigation-drawer__border{
 
+  background: transparent  !important;
+}  
+</style>
 
 
 <style lang='sass'>
