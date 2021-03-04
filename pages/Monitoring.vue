@@ -12,14 +12,12 @@
 
         <card1/>
         <card2/>
-        <card3/>
         
     </div>
 </template>
 <script>
-import card1 from "../components/analy/card1"
-import card2 from "../components/analy/card2"
-import card3 from "../components/analy/card3"
+import card1 from "../components/moit/card1"
+import card2 from "../components/moit/card2"
 export default {
     data(){
         return{
@@ -30,9 +28,9 @@ export default {
           to: '/',
         },
         {
-          text: 'Analytics',
+          text: 'Monitoring',
           disabled: false,
-          to: '/Analytics',
+          to: '/Monitoring',
         },
       ],
         }
@@ -40,7 +38,6 @@ export default {
     components:{
       card1,
       card2,
-      card3,
       }
     
 }

@@ -77,7 +77,9 @@
     </v-badge>
 
 
-    <v-divider class="py-1 divid"></v-divider>
+    <v-divider  class="my-1 divid">
+    </v-divider>
+    
 
   </v-app-bar>
 </template>
@@ -86,6 +88,7 @@ import massge from "./navbar/mwssage/massge"
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
+ 
   props: ["drawer","drawer2","showmessage","showmessage2","clipped"],
   data() {
     return {
@@ -122,7 +125,6 @@ export default {
       let r = this.drawer;
       r = !r;
       this.$emit("changemini", r);
-      console.log(this.drawer);
     },
     
     restdraw2(val) {
@@ -161,15 +163,12 @@ export default {
     },
 
 
-
-
-
-
   restclipped() {
       let r = this.clipped;
       r = !r;
       this.$emit("changeclipped", r);
   },
+
   },
 
 
@@ -179,6 +178,8 @@ export default {
 </script>
 
 <style>
+body{
+}
 .clipped{
   left: 0!important;
 }
@@ -193,6 +194,7 @@ export default {
   bottom: -8px;
   width: 100%;
 }
+
 .home.v-btn:not(.v-btn--round).v-size--default {
   min-width: 60px !important;
 }

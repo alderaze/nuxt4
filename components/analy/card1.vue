@@ -5,27 +5,131 @@
             md="3" 
             sm="6" 
             cols="12"
-            v-for="(item, index) in info" :key="index"
             >
-            <v-card class="d-flex align-center">
+            <v-card class="d-flex align-center pa-2">
                 <div class="text-center">
-                    <v-progress-circular
-                    :rotate="360"
-                    :size="70"
-                    :width="7"
-                    :value="value"
-                    color="teal"
-                    >
-                    {{ value }}
-                    </v-progress-circular>
+                    <svg style="height: 100px; width:100px; transform:scale(1,-1)">
+                        <rect x=5% y=10px  width="2px" height="40px"   fill="green"></rect>
+                        <rect x=10% y=10px width="2px" height="30px"  fill="green"></rect>
+                        <rect x=15% y=10px width="2px" height="80px"  fill="green"></rect>
+                        <rect x=20% y=10px width="2px" height="20px"  fill="green"></rect>
+                        <rect x=25% y=10px width="2px" height="50px"  fill="green"></rect>
+                        <rect x=30% y=10px width="2px" height="70px"  fill="green"></rect>
+                        <rect x=35% y=10px width="2px" height="100px" fill="green"></rect>
+                        <rect x=40% y=10px width="2px" height="50px"  fill="green"></rect>
+                        <rect x=45% y=10px width="2px" height="100px" fill="green"></rect>
+                        <rect x=50% y=10px width="2px" height="80px"  fill="green"></rect>
+                        <rect x=55% y=10px width="2px" height="70px"  fill="green"></rect>
+                        <rect x=60% y=10px width="2px" height="40px"  fill="green"></rect>
+                    </svg>
                 </div>
 
                 <div>
                     <v-card-text class="pb-0">
-                        {{item.name}}
+                        Total income
                     </v-card-text>
                     <v-card-title class="pt-0">
-                        ${{(item.value-30)+con}}
+                        ${{(75)+con}}
+                    </v-card-title>
+                </div>
+            </v-card>
+            </v-col>
+
+            <v-col 
+            md="3" 
+            sm="6" 
+            cols="12"
+            >
+            <v-card class="d-flex align-center pa-2">
+                <div class="text-center">
+                    <svg style="height: 100px; width:100px; transform:scale(1,-1)">
+                        <rect x=5% y=10px  width="2px" height="40px"   fill="purple"></rect>
+                        <rect x=10% y=10px width="2px" height="30px"  fill="purple"></rect>
+                        <rect x=15% y=10px width="2px" height="80px"  fill="purple"></rect>
+                        <rect x=20% y=10px width="2px" height="20px"  fill="purple"></rect>
+                        <rect x=25% y=10px width="2px" height="50px"  fill="purple"></rect>
+                        <rect x=30% y=10px width="2px" height="70px"  fill="purple"></rect>
+                        <rect x=35% y=10px width="2px" height="100px" fill="purple"></rect>
+                        <rect x=40% y=10px width="2px" height="50px"  fill="purple"></rect>
+                        <rect x=45% y=10px width="2px" height="100px" fill="purple"></rect>
+                        <rect x=50% y=10px width="2px" height="80px"  fill="purple"></rect>
+                        <rect x=55% y=10px width="2px" height="70px"  fill="purple"></rect>
+                        <rect x=60% y=10px width="2px" height="40px"  fill="purple"></rect>
+                    </svg>
+                </div>
+
+                <div>
+                    <v-card-text class="pb-0">
+                        New expense
+                    </v-card-text>
+                    <v-card-title class="pt-0">
+                        ${{(375)+con}}
+                    </v-card-title>
+                </div>
+            </v-card>
+            </v-col>
+            <v-col 
+            md="3" 
+            sm="6" 
+            cols="12"
+            >
+            <v-card class="d-flex align-center pa-2">
+                <div class="text-center">
+                    <svg style="height: 100px; width:100px; transform:scale(1,-1)">
+                        <rect x=5% y=10px  width="2px" height="40px" fill="red"></rect>
+                        <rect x=10% y=10px width="2px" height="30px" fill="red"></rect>
+                        <rect x=15% y=10px width="2px" height="80px" fill="red"></rect>
+                        <rect x=20% y=10px width="2px" height="20px" fill="red"></rect>
+                        <rect x=25% y=10px width="2px" height="50px" fill="red"></rect>
+                        <rect x=30% y=10px width="2px" height="70px" fill="red"></rect>
+                        <rect x=35% y=10px width="2px" height="100px" fill="red"></rect>
+                        <rect x=40% y=10px width="2px" height="50px" fill="red"></rect>
+                        <rect x=45% y=10px width="2px" height="100px" fill="red"></rect>
+                        <rect x=50% y=10px width="2px" height="80px" fill="red"></rect>
+                        <rect x=55% y=10px width="2px" height="70px" fill="red"></rect>
+                        <rect x=60% y=10px width="2px" height="40px" fill="red"></rect>
+                    </svg>
+                </div>
+
+                <div>
+                    <v-card-text class="pb-0">
+                        Daily Visits
+                    </v-card-text>
+                    <v-card-title class="pt-0">
+                        ${{(305)+con}}
+                    </v-card-title>
+                </div>
+            </v-card>
+            </v-col>
+            <v-col 
+            md="3" 
+            sm="6" 
+            cols="12"
+            >
+            <v-card class="d-flex align-center pa-2">
+                <div class="text-center">
+                    <svg style="height: 100px; width:100px; transform:scale(1,-1)">
+                        <rect x=5% y=10px  width="2px" height="40px"   fill="light-blue"></rect>
+                        <rect x=10% y=10px width="2px" height="30px"  fill="light-blue"></rect>
+                        <rect x=15% y=10px width="2px" height="80px"  fill="light-blue"></rect>
+                        <rect x=20% y=10px width="2px" height="20px"  fill="light-blue"></rect>
+                        <rect x=25% y=10px width="2px" height="50px"  fill="light-blue"></rect>
+                        <rect x=30% y=10px width="2px" height="70px"  fill="light-blue"></rect>
+                        <rect x=35% y=10px width="2px" height="100px" fill="light-blue"></rect>
+                        <rect x=40% y=10px width="2px" height="50px"  fill="light-blue"></rect>
+                        <rect x=45% y=10px width="2px" height="100px" fill="light-blue"></rect>
+                        <rect x=50% y=10px width="2px" height="80px"  fill="light-blue"></rect>
+                        <rect x=55% y=10px width="2px" height="70px"  fill="light-blue"></rect>
+                        <rect x=60% y=10px width="2px" height="40px"  fill="light-blue"></rect>
+                    </svg>
+                </div>
+
+                <div>
+                    <v-card-text class="pb-0">
+                        Daily Visits
+                    </v-card-text>
+                    <v-card-title class="pt-0">
+                        ${{(150)+con}}
                     </v-card-title>
                 </div>
             </v-card>
@@ -35,6 +139,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
    mounted(){
     this.an()
@@ -53,6 +159,7 @@ export default {
             ]
         }
     },
+    computed:{...mapGetters(["maincolor"])},
     methods: {
         an(){
                 let i = 0;
