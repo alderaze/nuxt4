@@ -1,5 +1,5 @@
 <template>
-  <v-app dark :class="$vuetify.theme.isDark?'':'bodyground'">
+  <v-app class="ee" dark :class="$vuetify.theme.isDark?'':'bodyground'">
   <app-Nave/>
   <app-Sittings/>
     <v-main>
@@ -47,6 +47,9 @@ export default {
 </script>
 
 <style>
+.ee{
+  height: 2000px;
+}
 .bodyground{
 
   background: #f1f4f6!important;

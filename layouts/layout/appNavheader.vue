@@ -1,213 +1,284 @@
 <template>
-  <v-app-bar 
-  fixed 
-  app 
-  elevation="0" 
-  height="57"
-  :color="$vuetify.theme.isDark?'transparent':'white'"  
-  :class="{clipped:clipped}">
-    <v-app-bar-nav-icon v-if="toggel" @click.stop="restdraw" >
-      <v-icon>
-        mdi-dots-vertical
-      </v-icon>
-    </v-app-bar-nav-icon>
-    <v-app-bar-nav-icon v-else @click.stop="restdraw" >
-      <v-icon>
-      mdi-format-list-bulleted
-      </v-icon>
-    </v-app-bar-nav-icon>
-    
-
-    <v-btn
-        icon
-      @click="setmini"
-      >
-        <v-icon>mdi-{{ `chevron-${mini ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-    <v-btn
-    icon
-    @click.stop="restclipped"
+  <v-app-bar
+      class="mynave shownav"
+      fixed
     >
-      <v-icon>
-        mdi-application
-      </v-icon>
-    </v-btn>
+    <v-container class="d-flex">
+      
+      <v-card width="100" height="50" class="mt-md-13 mt-sm-2" flat   color="transparent">
 
-    <v-app-bar-nav-icon
-      class="hidden-md-and-up"
-      @click="restdraw"
-    ></v-app-bar-nav-icon>
+        <v-img max-width="100%" max-height="100%" :src="$vuetify.theme.dark?require('../../assets/img/logo2.png'):require('../../assets/img/logo.png')"></v-img>
 
-    <v-spacer></v-spacer>
-      <v-badge
-      color="green"
-      content="2"
-      class="mr-3"
-      overlap
-        >
-    <v-btn icon
-    @click.stop="
-    restdraw2(drawer2),
-    Ishowmessage(showmessage),
-    Ishowmessage2(showmessage2)
-    ">
-      <v-icon>
-      far fa-comments
-      </v-icon>
-    </v-btn>
-    </v-badge>
+      </v-card>
 
-    <v-badge
-      color="green"
-      content="6"
-       overlap
-       class="mr-2"
-        >
-    <v-btn icon
-    class="pa-0" 
-    @click.stop="
-    restdraw2(drawer2),
-    Mshowmessage(showmessage),
-    Mshowmessage2(showmessage2)
-    ">
-      <v-icon>
-      far fa-bell
-      </v-icon>
-    </v-btn>
-    </v-badge>
+      <v-spacer></v-spacer>
+     
+            <v-row   class="my-5 hidden-sm-and-down">
+              <v-col>
+              </v-col>
+              <v-col md="8">
+              <div style="width:100%;position:relative">
+                  <v-text-field
+                  placeholder="search"
+                  outlined
+                  filled
+                  size="10"
+                  class=" rounded-pill inputseach mt-6 "
 
 
-    <v-divider  class="my-1 divid">
-    </v-divider>
+                ></v-text-field>
+                <v-icon size="15" class="iconse">
+                  fas fa-search
+                </v-icon>
+              </div>
+            </v-col>
+            
+            </v-row>
+
+          <v-list color="transparent" class="d-sm-flex hidden-sm-and-down">
+            <v-list-item v-for="(i,n) in info" :key="n">
+            <v-menu offset-y nudge-left="130" nudge-bottom="20">
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-list-item-title
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+                      class="d-flex"
+                    >
+                    {{i.name}}
+                    <v-icon class="ml-1" size="17">fa-angle-down</v-icon>
+                      
+                    </v-list-item-title>
+                  </template>
+                  <v-list width="200">
+                    <v-list-item
+                      v-for="(item, index) in i.items"
+                      :key="index"
+                      class="moveitem"
+                    >
+                      <v-list-item-title 
+                      @mouseleave="item.hovernav = false" 
+                      @mouseover="item.hovernav = true" 
+                      :class="item.hovernav?colortext:''"
+                      >{{ item.title }}</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
+            </v-list-item>
+            <v-list-item>
+              <v-list-item-title>contact</v-list-item-title>
+            </v-list-item>
+          </v-list>
+
+
+          <!-- nav mobil -->
+          <v-app-bar-nav-icon  @click="expand = !expand" class="hidden-sm-and-up"></v-app-bar-nav-icon >
+          <v-card
+          flat
+          :class="{'shownavsm':expand,'navsm':expand}"
+          class="navsm trannavsm hidden-sm-and-up">
+            <v-list color="transparent"  >
+              <v-list-item v-for="(i,n) in info" :key="n" class="py-1">
+              <v-menu flat offset-y nudge-left="130" nudge-bottom="20">
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-list-item-title
+                        dark
+                        v-bind="attrs"
+                        v-on="on"
+                        
+                      >
+                      {{i.name}}
+                      <v-icon class="ml-1" size="17">fa-angle-down</v-icon>
+                        
+                      </v-list-item-title>
+                    </template>
+                    <v-list  flat style="height:100%!important"  width="100%">
+                      <v-list-item
+                      width="100%"
+                        v-for="(item, index) in i.items"
+                        :key="index"
+                      >
+                        <v-list-item-title 
+                        class="d-flex"
+                        @mouseleave="item.hovernav = false" 
+                        @mouseover="item.hovernav = true" 
+                        :class="item.hovernav?colortext:''"
+                        >{{ item.title }}</v-list-item-title>
+                      </v-list-item>
+                    </v-list>
+                  </v-menu>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-title>contact</v-list-item-title>
+              </v-list-item>
+          </v-list>
+          <v-divider class="mx-3 my-2"></v-divider>
+          
+          <v-row  >
+              <v-col>
+              <div style="width:100%;position:relative">
+                  <v-text-field
+                  placeholder="search"
+                  outlined
+                  filled
+                  size="10"
+                  class=" rounded-pill inputseach mt-6 "
+
+
+                ></v-text-field>
+                <v-icon size="15" class="iconse">
+                  fas fa-search
+                </v-icon>
+              </div>
+            </v-col>
+            
+            </v-row>
+          </v-card>          
+        
+    </v-container>
+
     
 
-  </v-app-bar>
+
+    </v-app-bar>
 </template>
 <script>
-import massge from "./navbar/mwssage/massge"
+
 import { mapMutations, mapGetters } from "vuex";
 
 export default {
+  mounted() {
+
+    let el = document.querySelector(".mynave")
+    window.addEventListener('scroll',() => {
+
+      if(window.scrollY <= 0){
+
+        el.classList.add("shownav")
+      }else{
+        el.classList.remove("shownav")
+
+        
+      }
+
+    })
+  },
  
   props: ["drawer","drawer2","showmessage","showmessage2","clipped"],
   data() {
     return {
-      toggel:true,
-      dialog:false,
-      show: false,
-      model: 1,
-      infos: [
-        "Mike John Responded to your email",
-        "You have 5 new tasks",
-        "You're now friends with Andrew",
-        "Another Notification",
-        "Another one",
-      ],
-      user: ["portfile", "sitting"],
+        expand: true,
+        info:[
+          {name:"home",items:[
+            {hovernav:false,title:"home1"},
+            {hovernav:false,title:"home2"}
+          ]
+          },
+          {name:"newsfeed",items:[
+            {hovernav:false,title:"Newsfeed"},
+            {hovernav:false,title:"Poeple Nearly"},
+            {hovernav:false,title:"My friends"},
+            {hovernav:false,title:"Chatroom"},
+            {hovernav:false,title:"image"},
+            {hovernav:false,title:"videos"},
+          ]
+          },
+          {name:"timeline",items:[
+            {hovernav:false,title:"timeline about"},
+            {hovernav:false,title:"timeline album"},
+            {hovernav:false,title:"timeline frinds"},
+            {hovernav:false,title:"edit : basic info"},
+            {hovernav:false,title:"edit : work"},
+            {hovernav:false,title:"edit : intrest"},
+            {hovernav:false,title:"acount sittings"},
+            {hovernav:false,title:"change passowrd"}
+          ]},
+          {name:"pages",items:[
+            {hovernav:false,title:"main1"},
+            {hovernav:false,title:"main2"},
+            {hovernav:false,title:"main3"},
+            {hovernav:false,title:"main4"},
+          ]}
+
+        ],
     };
   },
   computed: {
     ...mapGetters(["maincolor", "colortext"]),
-    mini: {
-      get() {
-        return this.$store.getters["naving/minii"];
-      },
-      set() {
-        console.log("asdsd");
-      },
     },
     
-  },
   methods: {
-    ...mapMutations("naving", ["setmini", "retdrawer"]),
-    restdraw() {
-      this.toggel = !this.toggel
-      let r = this.drawer;
-      r = !r;
-      this.$emit("changemini", r);
-    },
+
     
-    restdraw2(val) {
-      let r = val
-      r = !r;
-      this.$emit("changemini2", r);
-    },
-
-
-    Ishowmessage(val) {
-       let r = val
-      r = true;
-      console.log("alderaze1")
-      this.$emit("Ishowmessage", r);
-
-    },
-    Ishowmessage2(val) {
-      let r = val
-      r =false
-      this.$emit("Ishowmessage2", r);
-    },
-
-
-
-    Mshowmessage(val) {
-       let r = val
-      r = false;
-      console.log("alderaze1")
-      this.$emit("Ishowmessage", r);
-
-    },
-    Mshowmessage2(val) {
-      let r = val
-      r =true
-      this.$emit("Ishowmessage2", r);
-    },
-
-
-  restclipped() {
-      let r = this.clipped;
-      r = !r;
-      this.$emit("changeclipped", r);
-  },
 
   },
 
 
-  components:{massge}
 
 };
 </script>
 
 <style>
-body{
+
+.shownav{
+  position: absolute !important;
+  top: -80px!important;
+  transition:all .2s;
 }
-.clipped{
-  left: 0!important;
+.mynave{
+  transition:all .4s;
+
 }
-.bar {
-  background: transparent !important;
+.inputsearch.v-text-field--filled > 
+.v-input__control >
+.v-input__slot, 
+.v-text-field--full-width > 
+.v-input__control > 
+.v-input__slot, .v-text-field--outlined > 
+.v-input__control > 
+.v-input__slot{
+
+  min-height: 30px;
+  max-height: 30px;
+
+}
+.iconse{
+  position: absolute!important;
+  top:5px!important;
+  right:10px!important
+}
+.inputsearch .v-text-field__details{
+  display: none!important;
+}
+
+.inputsearch .fa-search {
+      margin: 0 0 31px 0  !important;
+    padding: 0 !important;
+    font-size: 17px !important;
+}
+
+.trannavsm{
+  transition:all .5s;
+}
+.navsm{
+  position: fixed;
+  top:56px;
+  left:0;
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+
+}
+.shownavsm{
+  position: fixed;
+  top:56px;
+  left:0;
+  width: 100%;
+  height: 60vh;
 }
 </style>
-
 <style scoped>
-.divid{
-  position: absolute;
-  bottom: -8px;
-  width: 100%;
-}
-
-.home.v-btn:not(.v-btn--round).v-size--default {
-  min-width: 60px !important;
-}
-.v-list-item :hover .v-list-item--link:before {
-  background-color: red !important;
-  bottom: 0;
-  content: "";
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+.moveitem{
+  cursor: pointer;
 }
 </style>
