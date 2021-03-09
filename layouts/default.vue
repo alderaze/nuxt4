@@ -9,17 +9,7 @@
       </v-container>
     </v-main>
 
-    <v-footer
-    padless
-    height="50px"
-  >
-  <v-card class="text-center" width="100%">
-    <v-card-title class="d-block tex-center">
-      dan 2021
-    </v-card-title>
-  </v-card>
-
-  </v-footer>
+      <app-Footer/>
     
   </v-app>
 </template>
@@ -28,6 +18,7 @@
 
 
 import appNave from"./layout/appNave"
+import appFooter from"./layout/appFooter"
 import appSittings from"./layout/appSittings"
 export default {
  
@@ -41,7 +32,7 @@ export default {
       console.log(this.$vuetify.theme.isDark)
     }
   },
-  components:{appNave,appSittings},
+  components:{appNave,appSittings,appFooter},
   middleware:"med"
 }
 </script>

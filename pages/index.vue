@@ -1,10 +1,12 @@
 <template>
   <div>
+    <apphead/>
     
   </div>
 </template>
 
 <script>
+import apphead from "../components/index/apphead"
 import {  mapGetters } from "vuex";
 export default {
  
@@ -29,6 +31,7 @@ export default {
   methods:{
     
   },
+  components:{apphead}
 
 
   

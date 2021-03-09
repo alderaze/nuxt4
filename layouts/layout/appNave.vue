@@ -1,6 +1,6 @@
 <template>
-  <div class="px-5">
-    <app-Navheader/>
+  <div class="px-5 index">
+    <app-Navheader class="index"/>
   </div>
 </template>
 
@@ -27,6 +27,13 @@ export default {
   },
 };
 </script>
+<style >
+
+.index{
+  z-index: 100!important;
+}
+  
+</style>
 
 
 

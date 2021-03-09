@@ -167,7 +167,7 @@ export default {
   props: ["drawer","drawer2","showmessage","showmessage2","clipped"],
   data() {
     return {
-        expand: true,
+        expand: false,
         info:[
           {name:"home",items:[
             {hovernav:false,title:"home1"},
